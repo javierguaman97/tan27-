@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rosa animada octagonal</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --petal1:#ff6b99;
+      --petal2:#ff4477;
+      --center:#ffd166;
+      --stem:#2c7a49;
+      --leaf:#2a8a55;
+    }
+
+    html,body{height:100%;margin:0;background:radial-gradient(circle at 30% 10%, #10203a 0%, var(--bg) 40%);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+
+    h1{
+      font-family:'Great Vibes',cursive;
+      color:#ff99cc;
+      font-size:2.5em;
+      text-shadow:0 0 8px #ffb3d9,0 0 12px #ff66aa;
+      margin-bottom:20px;
+      animation:fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn{
+      0%{opacity:0;transform:translateY(-20px)}
+      100%{opacity:1;transform:translateY(0)}
+    }
+
+    svg{width:420px;max-width:86vw;aspect-ratio:1/1;overflow:visible}
+
+    .petal path{fill:var(--petal1);stroke:rgba(0,0,0,0.08);stroke-width:1;transform-origin:50% 70%;transform-box:fill-box;}
+    .petal.alt path{fill:var(--petal2)}
+
+    @keyframes openClosePetal{
+      0%,100%{transform:translateY(8%) scaleY(0.15);opacity:0.3}
+      50%{transform:translateY(0%) scaleY(1);opacity:1}
+    }
+
+    .petal path{animation:openClosePetal 4s ease-in-out infinite;}
+    .petal:nth-child(1) path{animation-delay:0s}
+    .petal:nth-child(2) path{animation-delay:0.25s}
+    .petal:nth-child(3) path{animation-delay:0.5s}
+    .petal:nth-child(4) path{animation-delay:0.75s}
+    .petal:nth-child(5) path{animation-delay:1s}
+    .petal:nth-child(6) path{animation-delay:1.25s}
+    .petal:nth-child(7) path{animation-delay:1.5s}
+    .petal:nth-child(8) path{animation-delay:1.75s}
+
+    .center circle{animation:pulse 4s ease-in-out infinite;}
+    @keyframes pulse{
+      0%,100%{r:8;opacity:0.8}
+      50%{r:10;opacity:1}
+    }
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Solo se vive una vez</h1>
+  <svg viewBox="-120 -120 240 240" xmlns="http://www.w3.org/2000/svg">
+    <!-- tallo -->
+    <path d="M0 70 C-2 40 6 10 0 -20" stroke="var(--stem)" stroke-width="6" stroke-linecap="round" fill="none" />
+
+    <!-- hojas -->
+    <g transform="translate(-8,22) rotate(15)">
+      <path fill="var(--leaf)" opacity="0.95" d="M0 10 C-18 6 -36 0 -40 -12 C-34 -6 -18 -14 0 -18 C16 -20 34 -12 40 4 C26 -2 12 12 0 10 Z" />
+    </g>
+    <g transform="translate(12,46) rotate(-15)">
+      <path fill="var(--leaf)" opacity="0.95" d="M0 10 C-18 6 -36 0 -40 -12 C-34 -6 -18 -14 0 -18 C16 -20 34 -12 40 4 C26 -2 12 12 0 10 Z" />
+    </g>
+
+    <!-- pétalos en forma octagonal -->
+    <g transform="translate(0,-8)">
+      <g class="petal" transform="rotate(0)"><path d="M0 8 L20 0 L28 -20 L20 -40 L0 -48 L-20 -40 L-28 -20 L-20 0 Z"/></g>
+      <g class="petal alt" transform="rotate(45)"><path d="M0 8 L20 0 L28 -20 L20 -40 L0 -48 L-20 -40 L-28 -20 L-20 0 Z"/></g>
+      <g class="petal" transform="rotate(90)"><path d="M0 8 L20 0 L28 -20 L20 -40 L0 -48 L-20 -40 L-28 -20 L-20 0 Z"/></g>
+      <g class="petal alt" transform="rotate(135)"><path d="M0 8 L20 0 L28 -20 L20 -40 L0 -48 L-20 -40 L-28 -20 L-20 0 Z"/></g>
+      <g class="petal" transform="rotate(180)"><path d="M0 8 L20 0 L28 -20 L20 -40 L0 -48 L-20 -40 L-28 -20 L-20 0 Z"/></g>
+      <g class="petal alt" transform="rotate(225)"><path d="M0 8 L20 0 L28 -20 L20 -40 L0 -48 L-20 -40 L-28 -20 L-20 0 Z"/></g>
+      <g class="petal" transform="rotate(270)"><path d="M0 8 L20 0 L28 -20 L20 -40 L0 -48 L-20 -40 L-28 -20 L-20 0 Z"/></g>
+      <g class="petal alt" transform="rotate(315)"><path d="M0 8 L20 0 L28 -20 L20 -40 L0 -48 L-20 -40 L-28 -20 L-20 0 Z"/></g>
+    </g>
+
+    <!-- centro -->
+    <g class="center" transform="translate(0,0)">
+      <circle cx="0" cy="6" r="8" fill="var(--center)" />
+    </g>
+  </svg>
+</body>
+</html>
